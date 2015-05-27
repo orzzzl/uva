@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void clear () {
+    memset (card, 0, sizeof (card));
+    memset (cnt, 0, sizeof (cnt));
+    memset (stop, 0, sizeof (stop));
+}
+
+
+int main () {
+    int stop [10];
+    int cnt [10];
+    int card [20][20];
+
+    char s [1000];
+
+    map <char, int> tran;
+    
+    tran ['A'] = 1;
+    tran ['T'] = 10;
+    tran ['J'] = 11;
+    tran ['Q'] = 12;
+    tran ['K'] = 13;
+    tran ['S'] = 0;
+    tran ['H'] = 1;
+    tran ['D'] = 2;
+    tran ['C'] = 3;
+
+    while (gets (s)) {
+	clear ();
+	for (int i = 0; i < 13; i ++) {
+	    card [tran [s[i * 3]]] [tran [s[i * 3 + 1]]] = 1;
+	    cnt [tran [s[i * 3]]] ++;
+	}
+
+	int pnt = 0;
+
+	for (int i = 0; i < 4; i ++) {
+	    if (card [1][i]) {
+		pnt += 4;
+		stop [i] ++;
+	    }
+
+	    if (card [13][i]) {
+		pnt += 3;
+		if (cnt [i] == 1)    pnt -= 1;
+                if (cnt [i] > 1)    stop [i] ++;
+	    }
+
+
+	    if (card [12][i]) {
+		pnt += 2;
+		if (cnt [i] <= 2) pnt -= 1;
+		else stop [i] ++;
+
+
+
+
