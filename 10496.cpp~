@@ -1,7 +1,0 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-int manhattan (int a, int b, int c, int d) {
-    return abs (a - c) + abs (b - d);
-}
-
