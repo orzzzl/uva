@@ -1,6 +1,7 @@
 #!/bin/bash
 git add .
 git rm *\~
+rm *\~
 git rm !*.cpp
 git commit -m "EMPTY"
 git rm *\~
